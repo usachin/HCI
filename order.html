@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">   
+   
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+     <!-- Site Metas -->
+    <title>Live Dinner Restaurant - Responsive HTML5 Template</title>  
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">    
+	<!-- Site CSS -->
+    <link rel="stylesheet" href="css/style.css">    
+	<!-- Pickadate CSS -->
+    <link rel="stylesheet" href="css/classic.css">    
+	<link rel="stylesheet" href="css/classic.date.css">    
+	<link rel="stylesheet" href="css/classic.time.css">    
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/custom.css">
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+	<!-- Start header -->
+	<header class="top-navbar">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="container">
+				<a class="navbar-brand" href="index.html">
+					<img src="images/logo.png" alt="" />
+				</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-rs-food" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+				  <span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbars-rs-food">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+						<li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
+						<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+						<li class="nav-item active dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Pages</a>
+							<div class="dropdown-menu" aria-labelledby="dropdown-a">
+								<a class="dropdown-item" href="reservation.html">Reservation</a>
+								<a class="dropdown-item" href="gallery.html">Gallery</a>
+							</div>
+						</li>
+						
+						<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+</head>
+<script type="text/javascript">
+	window.onload = function() {
+	var odr = JSON.parse(sessionStorage.getItem("order"));
+	
+
+	var container = document.getElementById("row");
+	/*alert(container);*/
+
+	for (var i=0, len = odr.length; i < len; ++i) {
+     var img = document.createElement("img");
+     var name ="hci/images/" +odr[i] + ".jpg"; 
+     var hh = document.createElement("h3");
+     hh.innerHTML = odr[i];
+     img.src = name;
+     img.style = "height:180px;width: 200px";
+     img.className = "img-fluid";
+     var tr = document.createElement("tr");
+     var td1 = document.createElement("td");
+     td1.appendChild(hh);
+     var td2 = document.createElement("td");
+     td2.appendChild = img;
+     tr.appendChild(td1);
+     tr.appendChild(td2);
+     var table = document.getElementById("table");
+     table.appendChild(tr)
+}
+
+};
+
+
+function play(){
+			new Audio("hci/audio/confirm_english.mp3").play();
+			
+			mytime = setTimeout(kan,2000);
+			
+		}
+function kan(){
+	new Audio("file:///D:/6/HCI-main/live-dinner/audio/kannada.mp3").play()
+}
+
+function done(){
+	location.replace("regards.html");
+	
+}	
+</script>
+<style>
+	
+.button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+.header {
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    top: 5%;
+    left: 42%;
+    margin-left: -50px; /* margin is -0.5 * dimension */
+    margin-top: -25px;
+    color: green; 
+}
+</style>
+<body>
+	<h2 class="header">Your order's, Conform by clicking Done</h2>
+	</br></br></br></br>
+    <div class="row" id="row">
+      <div class="col-lg-4 ">
+          <div class="gallery-single">
+            <table id="table">
+            </table>
+          </div>
+      </div>
+  </div>
+	<table class="table">
+	<tr>
+	<div id="X" ></div>
+	</tr>
+	</table>
+	<input type = "button" value="Done" onmouseover="play()"  onclick="done()" class="button" style="text-align: center;margin-left: 50%;">
+
+
+</body>
+</html>

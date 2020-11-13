@@ -1,0 +1,165 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Welcome</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script type="text/javascript">
+    window.onload = function() {
+    var odr = JSON.parse(sessionStorage.getItem("order"));
+    
+
+    var container = document.getElementById("row");
+    /*alert(container);*/
+
+    for (var i=0, len = odr.length; i < len; ++i) {
+     var img = document.createElement("img");
+     var name ="hci/images/" +odr[i] + ".jpg"; 
+     var hh = document.createElement("h3");
+     hh.innerHTML = odr[i];
+     img.src = name;
+     img.style = "height:180px;width: 200px";
+     img.className = "img-fluid";
+     var tr = document.createElement("tr");
+     var td1 = document.createElement("td");
+     td1.appendChild(hh);
+     var td2 = document.createElement("td");
+     td2.appendChild(img);
+     td2.className = "text-center";
+     tr.appendChild(td1);
+     tr.appendChild(td2);
+     var table = document.getElementById("table");
+     table.prepend(tr);
+}
+
+};
+
+
+function play(){
+            new Audio("hci/audio/confirm_english.mp3").play();
+            
+            mytime = setTimeout(kan,2000);
+            
+        }
+function kan(){
+    new Audio("file:///D:/6/HCI-main/live-dinner/audio/kannada.mp3").play()
+}
+
+function done(){
+    location.replace("regards.html");
+    
+}   
+</script>
+ </head>
+ <style>
+     .invoice-title h2, .invoice-title h3 {
+    display: inline-block;
+}
+
+.table > tbody > tr > .no-line {
+    border-top: none;
+}
+
+.table > thead > tr > .no-line {
+    border-bottom: none;
+}
+
+.table > tbody > tr > .thick-line {
+    border-top: 2px solid;
+}
+ </style>
+ <body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="invoice-title">
+                    <h2>Invoice</h2><h3 class="pull-right">Order</h3>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <address>
+                        <strong>Billed To:</strong><br>
+                            <br>
+                            
+                        </address>
+                    </div>
+                    <div class="col-xs-6 text-right">
+                        <strong>Shipped To:</strong><br>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <address>
+                            <strong>Payment Method:</strong><br>
+                            Cash On Delivery<br>
+                        </address>
+                    </div>
+                    <div class="col-xs-6 text-right">
+                        <address>
+                            <strong>Order Date:</strong><br>
+                            <br><br>
+                        </address>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><strong>Order summary</strong></h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-condensed">
+                                <thead>
+                                    <tr>
+                                        <td><strong>Item</strong></td>
+                                        <td class="text-center"><strong>Price</strong></td>
+                                        <td class="text-center"><strong>Quantity</strong></td>
+                                        <td class="text-right"><strong>Totals</strong></td>
+                                    </tr>
+                                </thead>
+                                
+                                <tbody id="table">
+                                    <tr>
+                                        <td></td>
+                                        <td class="text-center">RS{{row[2]}}</td>
+                                        <td class="text-center">{{value}}</td>
+                                        <td class="text-right">RS{{value*row[2]}}</td>
+                                    </tr>
+                                   <tr>
+    								<td class="thick-line"></td>
+    								<td class="thick-line"></td>
+    								<td class="thick-line text-center"><strong>Subtotal</strong></td>
+    								<td class="thick-line text-right">RS{{total}}</td>
+    							</tr>
+    							<tr>
+    								<td class="no-line"></td>
+    								<td class="no-line"></td>
+    								<td class="no-line text-center"><strong>Shipping</strong></td>
+    								<td class="no-line text-right">RS:{{0.08*total}}</td>
+    							</tr>
+    							<tr>
+    								<td class="no-line"></td>
+    								<td class="no-line"></td>
+    								<td class="no-line text-center"><strong>Total</strong></td>
+    								<td class="no-line text-right">RS{{total+(0.08*total)}}</td>
+    							</tr>
+                                </tbody>
+                            </table>
+                            <input type = "button" value="Done" onmouseover="play()"  onclick="done()" class="button" style="text-align: center;margin-left: 50%;">
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ </body>
+ </html>
